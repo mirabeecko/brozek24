@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: brozek.pro / brozek.marketing -->
+  <title>Miroslav Brožek | Emergency Digital Marketing | 24h Výsledky</title>
+  <meta name="description" content="Emergency digital marketing. Žádná agenturní vata. 20 let v oboru. RescueWeb 24h, E-shop FastTrack 72h, Audit za noc. Termín je svatá věc. Volejte 735 847 185.">
+  <meta name="keywords" content="emergency marketing, digital marketing Praha, rychlý web 24 hodin, e-shop rychlá výroba, Miroslav Brožek">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brozek.pro/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://brozek.pro/">
+  <meta property="og:title"       content="Miroslav Brožek | Strategie není gamble.">
+  <meta property="og:description" content="Emergency digital marketing. Termín je svatá věc. Kecy patří do hospody. Volejte 735 847 185.">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Miroslav Brožek — Emergency Digital Marketing",
+    "url": "https://brozek.pro",
+    "telephone": "+420735847185",
+    "priceRange": "6500–85000 Kč",
+    "description": "Emergency digital marketing. 20 let v oboru. Žádná agenturní vata. Přímý tah na branku."
+  }
+  </script>
+
+  <style>
+    /* ── RESET ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── TOKENS ─────────────────────────────────── */
+    :root {
+      --black:  #000000;
+      --white:  #FFFFFF;
+      --green:  #00FF00;
+      --red:    #FF0000;
+      --orange: #FF5F1F;
+      --border: 3px solid #FFFFFF;
+      --border-thick: 5px solid #FFFFFF;
+    }
+
+    /* ── BASE ───────────────────────────────────── */
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: clamp(15px, 1.1vw, 18px);
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3rem); }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      border-bottom: var(--border-thick);
+    }
+
+    /* NAV */
+    .hero-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1rem, 4vw, 3rem);
+      border-bottom: var(--border);
+      gap: 1rem;
+    }
+
+    .brand {
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .nav-phone {
+      display: inline-block;
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--orange);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 3px solid var(--orange);
+      padding: 0.5rem 1.25rem;
+      transition: background 80ms, color 80ms;
+    }
+    .nav-phone:hover { background: var(--orange); color: var(--black); }
+
+    /* HERO CONTENT */
+    .hero-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+    }
+
+    /*
+     * SQUINT TEST — 3 focal points:
+     *   1. LED status bar  (bottom of hero, high contrast + animation)
+     *   2. This headline   (largest element on page)
+     *   3. Floating CTA    (neon orange, fixed position)
+     */
+    .headline {
+      font-size: clamp(3.5rem, 9.5vw, 10rem);
+      font-weight: 900;
+      line-height: 0.88;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+      word-break: break-word;
+    }
+
+    .sub {
+      max-width: 760px;
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      font-weight: 500;
+      line-height: 1.65;
+      border-left: 5px solid var(--orange);
+      padding-left: 1.5rem;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    .sub strong { font-weight: 900; }
+
+    /* SCARCITY WIDGET */
+    .scarcity {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.25rem;
+      border: 3px solid var(--orange);
+      padding: 1rem 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .scarcity-num {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .scarcity-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      line-height: 1.5;
+    }
+
+    /* COUNTDOWN (visible when offline) */
+    .countdown {
+      display: none;
+      border: 3px solid var(--red);
+      padding: 1.25rem 1.75rem;
+      margin-top: 1.5rem;
+      max-width: 480px;
+    }
+    .countdown.is-visible { display: block; }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    .countdown-time {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--red);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+    }
+
+    /* STATUS BAR — SQUINT FOCAL POINT 1 */
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem clamp(1rem, 4vw, 3rem);
+      border-top: var(--border);
+      font-size: clamp(0.75rem, 1vw, 0.9rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      flex-wrap: wrap;
+    }
+
+    .led {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+    .led.is-online  {
+      background: var(--green);
+      animation: pulse-green 1.5s ease-in-out infinite;
+    }
+    .led.is-offline {
+      background: var(--red);
+      animation: pulse-red 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 4px var(--green); }
+      50%       { box-shadow: 0 0 18px var(--green), 0 0 36px var(--green); }
+    }
+    @keyframes pulse-red {
+      0%, 100% { box-shadow: 0 0 4px var(--red); }
+      50%       { box-shadow: 0 0 18px var(--red), 0 0 36px var(--red); }
+    }
+
+    .status-msg.is-online  { color: var(--green); }
+    .status-msg.is-offline { color: var(--red); }
+
+    .status-ts {
+      margin-left: auto;
+      font-weight: 400;
+      opacity: 0.35;
+      font-size: 0.7rem;
+    }
+
+    /* ── OFFLINE CONTACT ────────────────────────── */
+    .offline-cta {
+      display: none;
+      border-bottom: 5px solid var(--red);
+      padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 4vw, 3rem);
+    }
+    .offline-cta.is-visible { display: block; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .offline-cta-link {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1.1rem 2rem;
+      border: 3px solid var(--red);
+      transition: background 80ms, color 80ms;
+    }
+    .offline-cta-link:hover { background: transparent; color: var(--red); }
+
+    /* ── SERVICES ───────────────────────────────── */
+    .services {
+      border-bottom: var(--border-thick);
+      padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 3rem);
+    }
+
+    .services-list { list-style: none; }
+
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: clamp(1rem, 2vw, 1.75rem) 0;
+      border-bottom: 2px solid rgba(255,255,255,0.15);
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .service-row:last-child { border-bottom: none; }
+
+    .service-name {
+      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .service-note {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.25rem;
+    }
+
+    .service-price {
+      font-size: clamp(1.4rem, 3vw, 2.5rem);
+      font-weight: 900;
+      color: var(--orange);
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── ABOUT ──────────────────────────────────── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+      border-bottom: var(--border-thick);
+      padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+    }
+
+    .about-big {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .about-detail {
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+      line-height: 1.9;
+      color: rgba(255,255,255,0.65);
+      border-left: 3px solid rgba(255,255,255,0.2);
+      padding-left: 1.5rem;
+    }
+
+    .about-detail a {
+      color: var(--orange);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .about-detail a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 1.5rem clamp(1rem, 4vw, 3rem);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── FLOATING CTA — SQUINT FOCAL POINT 3 ────── */
+    .cta-float {
+      position: fixed;
+      bottom: clamp(1rem, 2vw, 2rem);
+      right: clamp(1rem, 2vw, 2rem);
+      z-index: 999;
+      /* Drop shadow draws eye even when page is busy */
+      filter: drop-shadow(0 0 24px rgba(255, 95, 31, 0.7));
+    }
+
+    .cta-btn {
+      display: block;
+      background: var(--orange);
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: clamp(0.8rem, 1vw, 1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 1.1rem 1.75rem;
+      border: 3px solid var(--orange);
+      transition: background 80ms, color 80ms;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { background: var(--black); color: var(--orange); }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 768px) {
+      .about { grid-template-columns: 1fr; }
+      .service-row { flex-direction: column; gap: 0.25rem; }
+      .cta-float { left: 1rem; right: 1rem; bottom: 1rem; }
+      .cta-btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     HERO SECTION
+     Squint point #2: Headline (biggest element)
+     Squint point #1: LED status bar (bottom)
+════════════════════════════════════════════ -->
+<section class="hero">
+
+  <nav class="hero-nav">
+    <div class="brand">Miroslav Brožek</div>
+    <a href="tel:+420735847185" class="nav-phone">735&nbsp;847&nbsp;185</a>
+  </nav>
+
+  <div class="hero-body">
+
+    <h1 class="headline">Strategie<br>není<br>gamble.</h1>
+
+    <p class="sub">
+      Potřebujete do 24 hodin vypadat jako profík?
+      Chcete markeťáka, který je orientovaný na výkon?
+      Potřebujete rychlou výrobu? Za týden je pozdě?
+      <strong>Termín je svatá věc. Kecy patří do hospody.</strong>
+    </p>
+
+    <!-- Scarcity Widget -->
+    <div class="scarcity" id="scarcityWidget" aria-label="Dostupné emergency sloty">
+      <div class="scarcity-num" id="scarcityNum">2</div>
+      <div class="scarcity-label">emergency&nbsp;sloty<br>zbývají tento&nbsp;týden</div>
+    </div>
+
+    <!-- Countdown — visible only when offline -->
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="countdown-label">Dalsi dostupny slot za:</div>
+      <div class="countdown-time" id="countdownTime">--:--:--</div>
+    </div>
+
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar" id="statusBar" aria-live="polite">
+    <div class="led is-online" id="statusLed" role="img" aria-label="Status indikator"></div>
+    <span class="status-msg is-online" id="statusMsg">
+      JSEM ONLINE. VOLEJTE HNED: 735 847 185. I ve 3 rano. Termin bezi ted.
+    </span>
+    <span class="status-ts" id="statusTs"></span>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════
+     OFFLINE CONTACT (visible when busy)
+════════════════════════════════════════════ -->
+<div class="offline-cta" id="offlineCta">
+  <div class="container">
+    <p class="section-tag">// Doručuji zakázku — ale jsem tu</p>
+    <h2 style="font-size:clamp(1.5rem,3vw,2.5rem);font-weight:900;text-transform:uppercase;margin-bottom:1.5rem;">
+      Zanechte kontakt pro PRONTO odpověď
+    </h2>
+    <a class="offline-cta-link"
+       href="https://wa.me/420735847185?text=POTREBUJI%20PROFIKA%20HNED"
+       target="_blank" rel="noopener noreferrer">
+      WhatsApp — zanechat kontakt
+    </a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════ -->
+<section class="services">
+  <p class="section-tag">// Ceník — žádné skryté poplatky. Žádná vata.</p>
+  <ul class="services-list">
+    <li class="service-row">
+      <div>
+        <div class="service-name">RescueWeb 24h</div>
+      </div>
+      <div class="service-price">49 000 Kč</div>
+    </li>
+    <li class="service-row">
+      <div>
+        <div class="service-name">Identity Shock</div>
+      </div>
+      <div class="service-price">35 000 Kč</div>
+    </li>
+    <li class="service-row">
+      <div>
+        <div class="service-name">E-shop FastTrack (72h)</div>
+      </div>
+      <div class="service-price">85 000 Kč</div>
+    </li>
+    <li class="service-row">
+      <div>
+        <div class="service-name">Audit za noc (20:00 &rarr; 08:00)</div>
+      </div>
+      <div class="service-price">18 000 Kč</div>
+    </li>
+    <li class="service-row">
+      <div>
+        <div class="service-name">Placená konzultace (60 min)</div>
+        <span class="service-note">Platba předem nutná</span>
+      </div>
+      <div class="service-price">6 500 Kč</div>
+    </li>
+  </ul>
+</section>
+
+<!-- ════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════ -->
+<section class="about">
+  <div class="about-big">
+    20 let<br>v oboru.<br>Žádná<br>agenturní<br>vata.
+  </div>
+  <div class="about-detail">
+    <p>38 let na světě.<br>Přímý tah na branku.</p>
+    <br>
+    <p>Emergency digital marketing není buzzword.<br>
+       Je to záchranné lano pro firmy,<br>
+       které potřebují výsledky — ne prezentaci.</p>
+    <br>
+    <p><a href="tel:+420735847185">735 847 185</a></p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Miroslav Brožek</span>
+  <span>Emergency Digital Marketing</span>
+  <span id="footerStatus">Status: načítám...</span>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     FLOATING CTA — Squint point #3
+════════════════════════════════════════════ -->
+<div class="cta-float">
+  <a class="cta-btn"
+     href="https://wa.me/420735847185?text=POTREBUJI%20PROFIKA%20HNED"
+     id="ctaBtn"
+     target="_blank"
+     rel="noopener noreferrer">
+    POTREBUJI PROFIKA HNED
+  </a>
+</div>
+
+<!-- ════════════════════════════════════════════
+     STATUS ENGINE — Vanilla JS, zero deps
+════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  var POLL_MS   = 30000;
+  var WA_LINK   = 'https://wa.me/420735847185?text=POTREBUJI%20PROFIKA%20HNED';
+
+  /* ── Countdown ──────────────────────────────── */
+  var countdownTarget  = null;
+  var countdownHandle  = null;
+
+  function nextSlotTimestamp(offsetHours) {
+    var h   = offsetHours || 9;
+    var now = new Date();
+    var d   = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, h, 0, 0);
+    var wd  = d.getDay(); // 0=Sun, 6=Sat
+    if (wd === 6) d.setDate(d.getDate() + 2);
+    if (wd === 0) d.setDate(d.getDate() + 1);
+    return d.getTime();
+  }
+
+  function tickCountdown() {
+    var el   = document.getElementById('countdownTime');
+    var diff = countdownTarget - Date.now();
+    if (diff <= 0) { el.textContent = 'BRZY'; return; }
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000)   / 1000);
+    el.textContent =
+      pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function startCountdown(offsetHours) {
+    countdownTarget = nextSlotTimestamp(offsetHours);
+    if (!countdownHandle) {
+      tickCountdown();
+      countdownHandle = setInterval(tickCountdown, 1000);
+    }
+  }
+
+  function stopCountdown() {
+    if (countdownHandle) { clearInterval(countdownHandle); countdownHandle = null; }
+  }
+
+  /* ── Scarcity ───────────────────────────────── */
+  function renderScarcity(n) {
+    var numEl    = document.getElementById('scarcityNum');
+    var widgetEl = document.getElementById('scarcityWidget');
+    numEl.textContent = n;
+    var color = n <= 0 ? 'var(--red)' : (n === 1 ? 'var(--red)' : 'var(--orange)');
+    numEl.style.color          = color;
+    widgetEl.style.borderColor = color;
+  }
+
+  /* ── Apply status from JSON ─────────────────── */
+  function applyStatus(data) {
+    var isOnline = data.status === 'online';
+
+    /* LED */
+    var led = document.getElementById('statusLed');
+    led.className = 'led ' + (isOnline ? 'is-online' : 'is-offline');
+
+    /* Message */
+    var msg = document.getElementById('statusMsg');
+    msg.className = 'status-msg ' + (isOnline ? 'is-online' : 'is-offline');
+    msg.textContent = isOnline
+      ? 'JSEM ONLINE. VOLEJTE HNED: 735 847 185. I ve 3 rano. Termin bezi ted.'
+      : 'DORUČUJI ZAKÁZKU. Termín je svatá věc. Zanechte kontakt přes WhatsApp, ozvu se pronto.';
+
+    /* Offline sections */
+    var offlineCta = document.getElementById('offlineCta');
+    var countdown  = document.getElementById('countdown');
+    if (isOnline) {
+      offlineCta.classList.remove('is-visible');
+      countdown.classList.remove('is-visible');
+      stopCountdown();
+    } else {
+      offlineCta.classList.add('is-visible');
+      countdown.classList.add('is-visible');
+      startCountdown(data.next_slot_hours || 9);
+    }
+
+    /* Timestamp */
+    var ts = document.getElementById('statusTs');
+    if (data.last_update) {
+      try {
+        ts.textContent = 'Aktualizováno: ' + new Date(data.last_update).toLocaleTimeString('cs-CZ');
+      } catch (e) { ts.textContent = ''; }
+    }
+
+    /* Footer */
+    document.getElementById('footerStatus').textContent =
+      'Status: ' + (isOnline ? 'ONLINE' : 'BUSY');
+
+    /* Scarcity */
+    var slots = (typeof data.slots_remaining === 'number') ? data.slots_remaining : 2;
+    renderScarcity(slots);
+  }
+
+  /* ── Fetch loop ─────────────────────────────── */
+  function fetchStatus() {
+    fetch('status.json?_=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(applyStatus)
+      .catch(function (e) { console.warn('[status] fetch error:', e); });
+  }
+
+  fetchStatus();
+  setInterval(fetchStatus, POLL_MS);
+
+})();
+</script>
+
+</body>
+</html>
