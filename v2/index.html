@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miroslav Brožek | Emergency Digital Marketing</title>
+  <meta name="description" content="Emergency digital marketing. Web do 24h. E-shop za 72h. Audit za noc. 20 let v oboru. 735 847 185.">
+  <meta name="keywords" content="emergency digital marketing, web do 24 hodin, expresní web Praha, rychlý e-shop, krizová komunikace, Miroslav Brožek">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://brozek24.cz/">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://brozek24.cz/">
+  <meta property="og:title"       content="Miroslav Brožek — Strategie není gamble.">
+  <meta property="og:description" content="Emergency digital marketing. Termín je svatá věc. Kecy patří do hospody. 735 847 185.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Miroslav Brožek — Emergency Digital Marketing","url":"https://brozek24.cz","telephone":"+420735847185","priceRange":"6 500–85 000 Kč","description":"Emergency digital marketing. Web do 24 hodin. 20 let v oboru. Žádná agenturní vata.","address":{"@type":"PostalAddress","addressCountry":"CZ"},"openingHours":"Mo-Su 00:00-24:00"}
+  </script>
+
+  <!--
+  ══════════════════════════════════════════════════════
+  PLATEBNÍ LINKY — vytvořte v Stripe Dashboard
+  https://dashboard.stripe.com/payment-links
+  Pak nahraďte každé STRIPE_LINK_XXXX vlastní URL
+  ══════════════════════════════════════════════════════
+  -->
+
+  <style>
+    /* ── TOKENS ──────────────────────────────────── */
+    :root {
+      --bg:    #070707;
+      --bg2:   #0F0F0E;
+      --line:  #1E1E1C;
+      --text:  #E8E6E1;
+      --muted: #50504A;
+      --green: #00E64D;
+      --red:   #FF2929;
+      --amber: #FFB300;
+      --f-disp: Impact, 'Arial Black', 'Franklin Gothic Heavy', 'Haettenschweiler', sans-serif;
+      --f-mono: 'Courier New', Courier, monospace;
+      --f-ui:   system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── RESET ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--f-ui);
+      font-size: 15px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── CRT SCANLINE ────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px, transparent 2px,
+        rgba(0,0,0,0.032) 2px, rgba(0,0,0,0.032) 4px
+      );
+      pointer-events: none;
+      z-index: 9500;
+    }
+
+    /* ── COMMAND BAR ─────────────────────────────── */
+    .cmd {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 44px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 clamp(1rem, 3vw, 2.5rem);
+      background: var(--bg2);
+      border-bottom: 1px solid var(--line);
+      z-index: 8000;
+    }
+
+    .cmd-id {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .cmd-id b { color: var(--amber); }
+    /* domain name nesmí být CAPS */
+    .cmd-domain { text-transform: none; letter-spacing: 0.05em; }
+
+    .cmd-status {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .led {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .led.is-online  { background: var(--green); animation: glow-g 1.6s ease-in-out infinite; }
+    .led.is-offline { background: var(--red);   animation: glow-r 2s   ease-in-out infinite; }
+    @keyframes glow-g {
+      0%,100% { box-shadow: 0 0 3px var(--green); }
+      50%     { box-shadow: 0 0 14px var(--green), 0 0 28px rgba(0,230,77,.3); }
+    }
+    @keyframes glow-r {
+      0%,100% { box-shadow: 0 0 3px var(--red); }
+      50%     { box-shadow: 0 0 14px var(--red), 0 0 28px rgba(255,41,41,.3); }
+    }
+
+    .cmd-msg.is-online  { color: var(--green); }
+    .cmd-msg.is-offline { color: var(--red); }
+
+    .cmd-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .cmd-clock, .cmd-sess {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .cmd-sess b { color: var(--amber); }
+
+    @media (max-width: 640px) {
+      .cmd { grid-template-columns: auto 1fr; }
+      .cmd-id, .cmd-right { display: none; }
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      padding-top: 44px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      width: 100%;
+      padding: clamp(3rem, 7vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    /* ── ROTATING DISPLAY ────────────────────────── */
+    /*
+     * Impact font = nulový CDN request, na každém zařízení od Win95.
+     * Kondenzovaná šíře = maximální vizuální váha na minimální ploše.
+     * Fráze se střídají každých 4,5s — čas na přečtení + zapamatování.
+     */
+    .display-wrap {
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      /* min-height zabrání skoku layoutu při přechodu kratší → delší fráze */
+      min-height: calc(0.88 * 2 * clamp(5rem, 13vw, 14rem));
+    }
+
+    .display {
+      font-family: var(--f-disp);
+      font-size: clamp(5rem, 13vw, 14rem);
+      font-weight: 400;
+      line-height: 0.88;
+      text-transform: uppercase;
+      color: var(--text);
+      white-space: pre-line;  /* respektuje \n v JS stringach */
+      transition: opacity 0.45s ease;
+    }
+
+    .display.fading { opacity: 0; }
+
+    /* Hero phone */
+    .hero-tel {
+      display: inline-block;
+      font-family: var(--f-mono);
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--amber);
+      border-bottom: 3px solid rgba(255,179,0,0.45);
+      padding-bottom: 0.06em;
+      transition: color 80ms, border-color 80ms;
+    }
+    .hero-tel:hover { color: var(--text); border-color: rgba(232,230,225,0.5); }
+
+    /* Availability */
+    .avail {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .avail-num {
+      font-family: var(--f-disp);
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--amber);
+      transition: color 0.3s;
+    }
+
+    /* Countdown */
+    .countdown { display: none; margin-top: 2rem; }
+    .countdown.is-on { display: block; }
+    .cd-label {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.35rem;
+    }
+    .cd-time {
+      font-family: var(--f-mono);
+      font-size: clamp(1.8rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.06em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .status-ts {
+      margin-top: 1.2rem;
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* ── SERVICES ────────────────────────────────── */
+    .services {
+      padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .s-label {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .slot-line {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .slot-line b { color: var(--text); }
+
+    /* ── SERVICE CARD ────────────────────────────── */
+    .svc {
+      border-bottom: 1px solid var(--line);
+      padding: clamp(1.75rem, 3vw, 2.5rem) 0;
+    }
+    .svc:last-child { border-bottom: none; }
+
+    .svc-top {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .pb {
+      font-family: var(--f-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.22em 0.55em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .p1 { background: rgba(255,41,41,0.14);  color: var(--red); }
+    .p2 { background: rgba(255,179,0,0.14);  color: var(--amber); }
+    .p3 { background: rgba(232,230,225,0.07); color: #777; }
+
+    .svc-name {
+      font-family: var(--f-disp);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      text-transform: uppercase;
+      line-height: 1;
+      flex: 1;
+    }
+
+    .svc-time {
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .svc-price {
+      font-family: var(--f-disp);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--amber);
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    /* Card body: description + order button */
+    .svc-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Includes list */
+    .svc-includes {
+      flex: 1;
+      min-width: 260px;
+      list-style: none;
+      font-family: var(--f-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    .svc-includes li {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .svc-includes li:last-child { border-bottom: none; }
+
+    .svc-includes li::before {
+      content: '—';
+      color: var(--amber);
+      flex-shrink: 0;
+    }
+
+    .svc-includes li strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* Order button */
+    .svc-order-wrap { flex-shrink: 0; }
+
+    .svc-order {
+      display: inline-block;
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.6rem;
+      white-space: nowrap;
+      transition: background 80ms, color 80ms;
+    }
+
+    .svc-order.primary {
+      background: var(--amber);
+      color: var(--bg);
+    }
+    .svc-order.primary:hover {
+      background: var(--text);
+    }
+
+    .svc-order.secondary {
+      background: transparent;
+      color: var(--amber);
+      outline: 1px solid rgba(255,179,0,0.5);
+    }
+    .svc-order.secondary:hover {
+      outline-color: var(--amber);
+      color: var(--text);
+      outline-color: var(--text);
+    }
+
+    @media (max-width: 580px) {
+      .svc-order-wrap { width: 100%; }
+      .svc-order { display: block; text-align: center; }
+    }
+
+    /* ── BIO ─────────────────────────────────────── */
+    .bio {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .bio-big {
+      font-family: var(--f-disp);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      line-height: 1.0;
+      text-transform: uppercase;
+    }
+
+    .bio-detail {
+      font-family: var(--f-mono);
+      font-size: 0.82rem;
+      line-height: 2.1;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      border-left: 2px solid var(--line);
+      padding-left: 1.5rem;
+    }
+    .bio-detail a {
+      color: var(--amber);
+      border-bottom: 1px solid rgba(255,179,0,0.3);
+      transition: border-color 80ms;
+    }
+    .bio-detail a:hover { border-color: var(--amber); }
+
+    @media (max-width: 580px) { .bio { grid-template-columns: 1fr; } }
+
+    /* ── OFFLINE PANEL ───────────────────────────── */
+    .offline {
+      display: none;
+      border-top: 2px solid var(--red);
+      border-bottom: 2px solid var(--red);
+      background: rgba(255,41,41,0.03);
+      padding: 1.75rem clamp(1.5rem, 5vw, 4rem);
+    }
+    .offline.is-on {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .offline-copy {
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      line-height: 1.8;
+    }
+
+    .offline-btn {
+      display: inline-block;
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.75rem;
+      background: var(--red);
+      color: var(--bg);
+      white-space: nowrap;
+      transition: background 80ms, color 80ms;
+    }
+    .offline-btn:hover { background: transparent; color: var(--red); outline: 1px solid var(--red); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── FLOATING CTA ────────────────────────────── */
+    .cta-float {
+      position: fixed;
+      bottom: clamp(1rem, 2.5vw, 2rem);
+      right: clamp(1rem, 2.5vw, 2rem);
+      z-index: 7000;
+      filter: drop-shadow(0 0 20px rgba(255,179,0,0.38));
+    }
+
+    .cta-btn {
+      display: block;
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 1.05rem 1.75rem;
+      background: var(--amber);
+      color: var(--bg);
+      text-align: center;
+      white-space: nowrap;
+      transition: background 80ms;
+    }
+    .cta-btn:hover { background: var(--text); }
+
+    @media (max-width: 500px) { .cta-float { left: 1rem; right: 1rem; } }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     COMMAND BAR
+══════════════════════════════════════════════ -->
+<header class="cmd">
+  <div class="cmd-id">
+    <b>MB</b> // Emergency Marketing — <span class="cmd-domain">brozek24.cz</span>
+  </div>
+
+  <div class="cmd-status">
+    <div class="led is-online" id="cmdLed"></div>
+    <span class="cmd-msg is-online" id="cmdMsg" aria-live="polite">ONLINE</span>
+  </div>
+
+  <div class="cmd-right">
+    <span class="cmd-clock" id="cmdClock">00:00:00</span>
+    <span class="cmd-sess">SESSION&thinsp;<b id="sessTimer">00:00</b></span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     HERO — rotating display headline
+══════════════════════════════════════════════ -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-inner">
+
+    <div class="display-wrap" aria-live="polite">
+      <h1 class="display" id="displayEl">Strategie
+není gamble.</h1>
+    </div>
+
+    <a href="tel:+420735847185" class="hero-tel">735&thinsp;847&thinsp;185</a>
+
+    <div class="avail" id="availRow">
+      <span class="avail-num" id="availNum">2</span>
+      <span>emergency sloty<br>zbývají tento týden</span>
+    </div>
+
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="cd-label">Příští dostupný slot za:</div>
+      <div class="cd-time" id="cdTime">--:--:--</div>
+    </div>
+
+    <p class="status-ts" id="statusTs"></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════════ -->
+<section class="services" id="services" aria-label="Ceník">
+
+  <div class="section-hdr">
+    <span class="s-label">// Co přesně dostanete — žádná skrytá položka</span>
+    <span class="slot-line">Sloty tento týden: <b id="slotText">2&thinsp;/&thinsp;3</b></span>
+  </div>
+
+  <!-- ── P1: Expresní web ─────────────────────── -->
+  <div class="svc" data-svc="web24h">
+    <div class="svc-top">
+      <span class="pb p1">P1&nbsp;KRIT</span>
+      <h2 class="svc-name">Expresní web</h2>
+      <span class="svc-time">Dodání do 24 hodin</span>
+      <span class="svc-price">49 000 Kč</span>
+    </div>
+    <div class="svc-body">
+      <ul class="svc-includes">
+        <li>Responzivní webová prezentace nebo <strong>landing page připravená k provozu</strong></li>
+        <li>Mobilní optimalizace, on-page SEO, Google Analytics, sitemap a robots.txt</li>
+        <li>Napojení na kontaktní formulář, živý chat nebo WhatsApp tlačítko</li>
+        <li><strong>1 kolo revizí</strong> po dodání — v ceně, bez příplatku</li>
+        <li>Předáte podklady → web je online <strong>do 24 hodin od přijetí</strong></li>
+        <li>Zdrojové soubory jsou vaše. Žádné měsíční licenční poplatky.</li>
+      </ul>
+      <div class="svc-order-wrap">
+        <a class="svc-order primary"
+           href="https://buy.stripe.com/STRIPE_LINK_WEB24H"
+           target="_blank" rel="noopener noreferrer">
+          Objednat + zaplatit&thinsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── P1: Emergency Audit za noc ───────────── -->
+  <div class="svc" data-svc="audit">
+    <div class="svc-top">
+      <span class="pb p1">P1&nbsp;KRIT</span>
+      <h2 class="svc-name">Emergency Audit za noc</h2>
+      <span class="svc-time">20:00 → 08:00</span>
+      <span class="svc-price">18 000 Kč</span>
+    </div>
+    <div class="svc-body">
+      <ul class="svc-includes">
+        <li>Kompletní analýza webu — <strong>UX, konverzní cesta, rychlost, SEO, obsah</strong></li>
+        <li>Analýza přímé konkurence a positioning vaší nabídky</li>
+        <li>Identifikace 3 největších příčin ztráty zákazníků (opravitelné ihned)</li>
+        <li><strong>Prioritizovaný akční plán</strong> — co opravit první, co může počkat</li>
+        <li>Písemný report ve formátu PDF dodaný <strong>do 08:00 ráno</strong></li>
+        <li>Zahájení ve 20:00 — přijde-li objednávka a platba do té doby</li>
+      </ul>
+      <div class="svc-order-wrap">
+        <a class="svc-order primary"
+           href="https://buy.stripe.com/STRIPE_LINK_AUDIT"
+           target="_blank" rel="noopener noreferrer">
+          Objednat + zaplatit&thinsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── P2: Corporate Identity ───────────────── -->
+  <div class="svc" data-svc="identity">
+    <div class="svc-top">
+      <span class="pb p2">P2&nbsp;URG</span>
+      <h2 class="svc-name">Expresní Corporate Identity</h2>
+      <span class="svc-time">Dodání do 48 hodin</span>
+      <span class="svc-price">35 000 Kč</span>
+    </div>
+    <div class="svc-body">
+      <ul class="svc-includes">
+        <li><strong>Logo + kompletní vizuální identita</strong> — primární a sekundární varianta</li>
+        <li>Typografický a barevný systém použitelný ihned bez grafika</li>
+        <li>Digitální brand guidelines ve formátu PDF (jak a jak nepoužívat)</li>
+        <li>Klíčové aplikace: <strong>vizitka, hlavičkový papír, e-mail signature, social covers</strong></li>
+        <li><strong>2 kola revizí</strong> v ceně — předání zdrojových souborů (AI, PDF, PNG, SVG)</li>
+        <li>Žádné měsíční poplatky. Vše je vaše, navždy.</li>
+      </ul>
+      <div class="svc-order-wrap">
+        <a class="svc-order primary"
+           href="https://buy.stripe.com/STRIPE_LINK_IDENTITY"
+           target="_blank" rel="noopener noreferrer">
+          Objednat + zaplatit&thinsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── P2: Konzultace ────────────────────────── -->
+  <div class="svc" data-svc="konzultace">
+    <div class="svc-top">
+      <span class="pb p2">P2&nbsp;URG</span>
+      <h2 class="svc-name">Placená konzultace</h2>
+      <span class="svc-time">60 minut</span>
+      <span class="svc-price">6 500 Kč</span>
+    </div>
+    <div class="svc-body">
+      <ul class="svc-includes">
+        <li>60 minut <strong>1:1 video call nebo osobní schůzka</strong> — Praha bez příplatku</li>
+        <li>Marketing, strategie, web, brand, e-commerce, positioning — cokoliv co pálí</li>
+        <li>Konkrétní výstupy a doporučení — <strong>žádné obecné rady, jen přímý plán</strong></li>
+        <li>Záznam hovoru k dispozici do 2 hodin po skončení (na vyžádání)</li>
+        <li><strong>Platba předem je podmínkou</strong> — termín potvrdím do 1 hodiny po přijetí platby</li>
+      </ul>
+      <div class="svc-order-wrap">
+        <a class="svc-order primary"
+           href="https://buy.stripe.com/STRIPE_LINK_KONZULTACE"
+           target="_blank" rel="noopener noreferrer">
+          Zaplatit + rezervovat&thinsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── P3: E-shop ─────────────────────────────── -->
+  <div class="svc" data-svc="eshop">
+    <div class="svc-top">
+      <span class="pb p3">P3&nbsp;PRIOR</span>
+      <h2 class="svc-name">Expresní E-shop</h2>
+      <span class="svc-time">Dodání do 72 hodin</span>
+      <span class="svc-price">85 000 Kč</span>
+    </div>
+    <div class="svc-body">
+      <ul class="svc-includes">
+        <li><strong>Funkční e-shop připravený k prodeji</strong> — od platby po expedici</li>
+        <li>Napojení na platební bránu (Stripe, GoPay, Comgate — dle volby)</li>
+        <li>Produktový katalog <strong>do 50 položek</strong> + kategorie, filtry, vyhledávání</li>
+        <li>Responzivní design, mobilní checkout, DPH, doprava, slevové kódy</li>
+        <li>Napojení na účetní systém nebo export pro pohodu / Flexibee (volitelně)</li>
+        <li>Předáte podklady → e-shop je spuštěný <strong>do 72 hodin od přijetí</strong></li>
+      </ul>
+      <div class="svc-order-wrap">
+        <a class="svc-order primary"
+           href="https://buy.stripe.com/STRIPE_LINK_ESHOP"
+           target="_blank" rel="noopener noreferrer">
+          Objednat + zaplatit&thinsp;→
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── P3: Tiskoviny ──────────────────────────── -->
+  <div class="svc">
+    <div class="svc-top">
+      <span class="pb p3">P3&nbsp;PRIOR</span>
+      <h2 class="svc-name">Expresní tiskoviny</h2>
+      <span class="svc-time">Dle rozsahu</span>
+      <span class="svc-price" style="font-size:1rem;letter-spacing:.05em;color:#888">Fullservice</span>
+    </div>
+    <div class="svc-body">
+      <ul class="svc-includes">
+        <li>Grafický návrh: <strong>letáky, brožury, katalogy, plakáty, roll-upy, vizitky, bannery</strong></li>
+        <li>Soubory připravené pro tisk — CMYK, ořezy, spadavky. Tiskárna-ready.</li>
+        <li>Koordinace s tiskárnou a zajištění dopravy (volitelně, bez příplatku za správu)</li>
+        <li>Expresní dodání dle urgence — kapacita závisí na aktuálním stavu (viz status bar)</li>
+        <li>Cena závisí na rozsahu — <strong>poptejte, vrátím se s cenou do 1 hodiny</strong></li>
+      </ul>
+      <div class="svc-order-wrap">
+        <a class="svc-order secondary"
+           href="https://wa.me/420735847185?text=POPTAVKA%20TISKOVINY%3A%20"
+           target="_blank" rel="noopener noreferrer">
+          Poptat cenu → WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════
+     BIO
+══════════════════════════════════════════════ -->
+<section class="bio" aria-label="O mně">
+  <div class="bio-big">
+    20 let<br>v oboru.<br>38 let<br>na světě.
+  </div>
+  <div class="bio-detail">
+    Žádná agenturní vata.<br>
+    Přímý tah na branku.<br>
+    <br>
+    Termín je svatá věc.<br>
+    Kecy patří do hospody.<br>
+    <br>
+    <a href="tel:+420735847185">&rarr; 735 847 185</a><br>
+    <a href="https://wa.me/420735847185?text=POTREBUJI%20PROFIKA%20HNED"
+       target="_blank" rel="noopener">&rarr; WhatsApp</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     OFFLINE PANEL
+══════════════════════════════════════════════ -->
+<div class="offline" id="offlinePanel" aria-live="polite">
+  <div class="offline-copy">
+    Doručuji zakázku.<br>
+    Termín je svatá věc.<br>
+    Ozvu se pronto.
+  </div>
+  <a class="offline-btn"
+     href="https://wa.me/420735847185?text=POTREBUJI%20PROFIKA%20HNED"
+     target="_blank" rel="noopener noreferrer">
+    Zanechat kontakt — WhatsApp
+  </a>
+</div>
+
+<footer>
+  <span>&copy; 2026 Miroslav Brožek</span>
+  <span id="footerStatus">Status: načítám&hellip;</span>
+  <span>Emergency Digital Marketing</span>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     FLOATING CTA
+══════════════════════════════════════════════ -->
+<div class="cta-float">
+  <a class="cta-btn"
+     href="https://wa.me/420735847185?text=POTREBUJI%20PROFIKA%20HNED"
+     target="_blank" rel="noopener noreferrer">
+    Potřebuji profika hned
+  </a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ENGINE — Vanilla JS, zero deps
+══════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Utilities ──────────────────────────────── */
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  /* ── Live clock ─────────────────────────────── */
+  function tickClock() {
+    var d = new Date();
+    document.getElementById('cmdClock').textContent =
+      pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+
+  /* ── Session timer ──────────────────────────── */
+  var sessionStart = Date.now();
+  function tickSession() {
+    var ms = Date.now() - sessionStart;
+    document.getElementById('sessTimer').textContent =
+      pad(Math.floor(ms / 60000)) + ':' + pad(Math.floor((ms % 60000) / 1000));
+  }
+  tickSession();
+  setInterval(tickSession, 1000);
+
+  /* ── Rotating display headline ──────────────── */
+  /*
+   * Fráze jsou zapsány s \n pro přirozené zalomení.
+   * CSS white-space: pre-line je respektuje.
+   * CSS text-transform: uppercase dělá vše verzálkami.
+   */
+  var displayPhrases = [
+    'Strategie\nnení gamble.',
+    'Termín je\nsvatá věc.',
+    'Za týden\nje pozdě?',
+    'Kecy patří\ndo hospody.',
+    'Přímý tah\nna branku.',
+    'Žádná\nagenturní vata.'
+  ];
+
+  var dIdx = 0;
+  var dEl  = document.getElementById('displayEl');
+
+  function rotateDisplay() {
+    dEl.classList.add('fading');
+    setTimeout(function () {
+      dIdx = (dIdx + 1) % displayPhrases.length;
+      dEl.textContent = displayPhrases[dIdx];
+      dEl.classList.remove('fading');
+    }, 460);
+  }
+
+  setInterval(rotateDisplay, 4500);
+
+  /* ── Countdown ──────────────────────────────── */
+  var cdTarget = null;
+  var cdHandle = null;
+
+  function calcNextSlot(h) {
+    var d = new Date();
+    d.setDate(d.getDate() + 1);
+    d.setHours(h || 9, 0, 0, 0);
+    var wd = d.getDay();
+    if (wd === 6) d.setDate(d.getDate() + 2);
+    if (wd === 0) d.setDate(d.getDate() + 1);
+    return d.getTime();
+  }
+
+  function tickCountdown() {
+    var diff = cdTarget - Date.now();
+    if (diff <= 0) { document.getElementById('cdTime').textContent = 'BRZY'; return; }
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000)   / 1000);
+    document.getElementById('cdTime').textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+
+  /* ── Status engine ──────────────────────────── */
+  function applyStatus(data) {
+    var online = data.status === 'online';
+
+    var led = document.getElementById('cmdLed');
+    var msg = document.getElementById('cmdMsg');
+    led.className = 'led ' + (online ? 'is-online' : 'is-offline');
+    msg.className = 'cmd-msg ' + (online ? 'is-online' : 'is-offline');
+    msg.textContent = online ? 'ONLINE' : 'BUSY — DORUČUJI ZAKÁZKU';
+
+    var op  = document.getElementById('offlinePanel');
+    var cd  = document.getElementById('countdown');
+    var avl = document.getElementById('availRow');
+
+    if (online) {
+      op.classList.remove('is-on');
+      cd.classList.remove('is-on');
+      avl.style.display = '';
+      if (cdHandle) { clearInterval(cdHandle); cdHandle = null; }
+    } else {
+      op.classList.add('is-on');
+      cd.classList.add('is-on');
+      avl.style.display = 'none';
+      if (!cdHandle) {
+        cdTarget = calcNextSlot(data.next_slot_hours || 9);
+        tickCountdown();
+        cdHandle = setInterval(tickCountdown, 1000);
+      }
+    }
+
+    var slots = typeof data.slots_remaining === 'number' ? data.slots_remaining : 2;
+    var total = typeof data.slots_total      === 'number' ? data.slots_total     : 3;
+    var numEl  = document.getElementById('availNum');
+    numEl.textContent  = slots;
+    numEl.style.color  = slots <= 1 ? 'var(--red)' : 'var(--amber)';
+    document.getElementById('slotText').textContent = slots + '\u2009/\u2009' + total;
+
+    if (data.last_update) {
+      try {
+        document.getElementById('statusTs').textContent =
+          'Aktualizováno: ' + new Date(data.last_update).toLocaleTimeString('cs-CZ');
+      } catch (e) {}
+    }
+
+    document.getElementById('footerStatus').textContent =
+      'Status: ' + (online ? 'ONLINE' : 'BUSY');
+  }
+
+  function fetchStatus() {
+    fetch('status.json?_=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(applyStatus)
+      .catch(function (e) { console.warn('[status]', e); });
+  }
+
+  fetchStatus();
+  setInterval(fetchStatus, 30000);
+
+  /* ── Config engine ──────────────────────────── */
+  /*
+   * Načte config.json (generovaný přes admin.html) a aplikuje
+   * ceny, Stripe linky a kontaktní údaje bez zásahu do kódu.
+   */
+  function applyConfig(cfg) {
+    /* Služby — ceny + Stripe linky */
+    if (cfg.sluzby) {
+      Object.keys(cfg.sluzby).forEach(function (id) {
+        var s  = cfg.sluzby[id];
+        var el = document.querySelector('[data-svc="' + id + '"]');
+        if (!el || !s) return;
+
+        if (s.cena) {
+          var priceEl = el.querySelector('.svc-price');
+          if (priceEl && !priceEl.getAttribute('data-no-update')) {
+            priceEl.textContent = s.cena;
+          }
+        }
+
+        if (s.stripe_link && s.stripe_link.length > 10) {
+          var btnEl = el.querySelector('.svc-order');
+          if (btnEl) btnEl.href = s.stripe_link;
+        }
+      });
+    }
+
+    /* Kontakt — telefon + WhatsApp linky */
+    if (cfg.kontakt) {
+      var tel = cfg.kontakt.telefon;
+      var wa  = cfg.kontakt.whatsapp_cislo;
+
+      if (tel) {
+        /* Aktualizuj zobrazené číslo */
+        var telLinks = document.querySelectorAll('a[href^="tel:"]');
+        telLinks.forEach(function (a) {
+          a.href = 'tel:+' + tel.replace(/\s/g, '');
+          if (a.classList.contains('hero-tel')) {
+            a.textContent = tel;
+          }
+        });
+      }
+
+      if (wa) {
+        var waBase = 'https://wa.me/' + wa + '?text=POTREBUJI%20PROFIKA%20HNED';
+        document.querySelectorAll('a[href*="wa.me"]').forEach(function (a) {
+          /* Zachovej specifické texty pro tiskoviny */
+          if (a.href.indexOf('POPTAVKA') !== -1) {
+            a.href = 'https://wa.me/' + wa + '?text=POPTAVKA%20TISKOVINY%3A%20';
+          } else {
+            a.href = waBase;
+          }
+        });
+      }
+    }
+
+    /* Dostupnost — sloty */
+    if (cfg.dostupnost) {
+      var volne  = cfg.dostupnost.slotu_tento_tyden;
+      var celkem = cfg.dostupnost.celkem_slotu;
+      if (typeof volne  === 'number') document.getElementById('availNum').textContent  = volne;
+      if (typeof volne  === 'number' && typeof celkem === 'number') {
+        document.getElementById('slotText').textContent = volne + '\u2009/\u2009' + celkem;
+        var numEl = document.getElementById('availNum');
+        numEl.style.color = volne <= 1 ? 'var(--red)' : 'var(--amber)';
+      }
+    }
+  }
+
+  fetch('config.json?_=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(applyConfig)
+    .catch(function () { /* config.json neexistuje, použij defaults z HTML */ });
+
+}());
+</script>
+
+</body>
+</html>
