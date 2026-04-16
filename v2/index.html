@@ -930,10 +930,19 @@ není gamble.</h1>
   }
 
   function fetchStatus() {
-    fetch('status.json?_=' + Date.now(), { cache: 'no-store' })
-      .then(function (r) { return r.json(); })
+    /* Primárně /api/status (Vercel KV), fallback na statický status.json */
+    fetch('/api/status?_=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('no api');
+        return r.json();
+      })
       .then(applyStatus)
-      .catch(function (e) { console.warn('[status]', e); });
+      .catch(function () {
+        fetch('status.json?_=' + Date.now(), { cache: 'no-store' })
+          .then(function (r) { return r.json(); })
+          .then(applyStatus)
+          .catch(function (e) { console.warn('[status]', e); });
+      });
   }
 
   fetchStatus();
